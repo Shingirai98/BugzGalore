@@ -14,89 +14,72 @@
                 <p class="card-category">Home assessment before coming to work</p>
             </div>
             <div class="card-body">
-                <form>
+                <form method="post" action="ui-assess.html">
+                    {% csrf_token %}
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-7">
                             <div>
-                                Do you have a cough?
+                                <h4>Do you have a cough?</h4>
                             </div>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                            <input type="radio" id="customRadioInline1" name="cough" class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                            <input type="radio" id="customRadioInline2" name="cough" class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline2">No</label>
                         </div>
-                        <hr>
-                        <div class="col-md-5">
-                            <div class="form-group bmd-form-group is-filled">
-                                <label class="bmd-label-floating">Username</label>
-                                <input type="text" class="form-control" value="a">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group is-filled">
-                                <label class="bmd-label-floating">Email address</label>
-                                <input type="email" class="form-control" value="a@a.com">
-                            </div>
-                        </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Fist Name</label>
-                                <input type="text" class="form-control">
+                        <div class="col-md-7">
+                            <div>
+                                <h4>Are you sneezing? </h4>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Last Name</label>
-                                <input type="text" class="form-control">
-                            </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sneeze1" name="sneezing" class="custom-control-input">
+                            <label class="custom-control-label" for="sneeze1">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sneeze2" name="sneezing" class="custom-control-input">
+                            <label class="custom-control-label" for="sneeze2">No</label>
                         </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Adress</label>
-                                <input type="text" class="form-control">
+                        <div class="col-md-7">
+                            <div>
+                               <h4> Recent Covid-19 Exposure? </h4>
                             </div>
                         </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="exposure1" name="exposure" class="custom-control-input">
+                            <label class="custom-control-label" for="exposure1">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="exposure2" name="exposure" class="custom-control-input">
+                            <label class="custom-control-label" for="exposure2">No</label>
+                        </div>
                     </div>
+
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">City</label>
-                                <input type="text" class="form-control">
+                        <div class="col-md-7">
+                            <div>
+                                <h4> Have you had a fever in the past week? </h4>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Country</label>
-                                <input type="text" class="form-control">
-                            </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="fever1" name="fever" class="custom-control-input">
+                            <label class="custom-control-label" for="fever1">Yes</label>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Postal Code</label>
-                                <input type="text" class="form-control">
-                            </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="fever2" name="fever" class="custom-control-input">
+                            <label class="custom-control-label" for="fever2">No</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>About Me</label>
-                                <div class="form-group bmd-form-group">
-                                    <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                    <textarea class="form-control" rows="5"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <button type="submit" class="btn btn-primary pull-center">Submit Assessment</button>
                     <div class="clearfix"></div>
                 </form>
             </div>
