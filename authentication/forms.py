@@ -12,7 +12,7 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder" : "Username",  
-                "value"       : "test",              
+                "value"       : "a",
                 "class"       : "form-control"
             }
         ))
@@ -20,7 +20,7 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder" : "Password",
-                "value"       : "ApS12_ZZs8",           
+                "value"       : "1234a1234",
                 "class"       : "form-control"
             }
         ))
@@ -29,28 +29,28 @@ class SignUpForm(UserCreationForm):
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder" : "Username",                
+                "placeholder" : "",
                 "class": "form-control"
             }
         ))
     email = forms.EmailField(
         widget=forms.EmailInput(
             attrs={
-                "placeholder" : "Email",                
+                "placeholder" : "",
                 "class": "form-control"
             }
         ))
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                "placeholder" : "Password",                
+                "placeholder" : "",
                 "class": "form-control"
             }
         ))
     password2 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                "placeholder" : "Password check",                
+                "placeholder" : "",
                 "class": "form-control"
             }
         ))
