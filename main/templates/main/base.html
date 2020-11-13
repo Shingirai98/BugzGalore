@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- CSS -->
+
+        {% if title %}
+        <title>CME - {{ title }}</title>
+        {% else %}
+        <title>CME</title>
+        {% endif %}
+        {% block head_stuff %}
+        {% endblock head_stuff %}
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a class="" href="{% url 'homepage' %}">Home</a></li>
+                    <li><a class="" href="{% url 'about' %}">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col">
+                    {% block main_section %}
+                    {% endblock main_section %}
+                </div>
+            </div>
+        </main>
+        <footer>
+        </footer>
+    </body>
+
+</html>
