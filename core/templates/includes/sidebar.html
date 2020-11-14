@@ -11,28 +11,28 @@
         <ul class="nav">
 
 
-          <li class="nav-item {% if 'ui-tables' in segment %} active {% endif %}">
+          <li class="nav-item {% if 'ui-tables' in segment %} active {% endif %}"  {% if user.username == "a" %}style="display: none;" {% endif %}>
             <a class="nav-link" href="/ui-tables.html">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
 
-            <li class="nav-item {% if 'ui-assess' in segment %} active {% endif %}">
+            <li class="nav-item {% if 'ui-assess' in segment %} active {% endif %}"  {% if user.username == "su" %}style="display: none;" {% endif %}>
                 <a class="nav-link" href="/ui-assess.html">
                     <i class="material-icons">face</i>
                     <p>Self-Assessment</p>
                 </a>
             </li>
 
-            <li class="nav-item {% if 'ui-verify' in segment %} active {% endif %}">
+            <li class="nav-item {% if 'ui-verify' in segment %} active {% endif %}  {% if user.username == "su" %}style="display: none;" {% endif %}">
                 <a class="nav-link" href="/ui-verify.html">
                     <i class="material-icons">assignment_turned_in</i>
                     <p>SA Verification</p>
                 </a>
             </li>
 
-            <li class="nav-item {% if 'index' == segment %} active {% endif %}">
+            <li class="nav-item {% if 'index' == segment %} active {% endif %}"  {% if user.username == "a" %}style="display: none;" {% endif %}>
                 <a class="nav-link" href="/">
                     <i class="material-icons">graphic_eq</i>
                     <p>Reports </p>
