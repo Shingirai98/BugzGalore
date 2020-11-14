@@ -32,6 +32,8 @@ def pages(request):
 
         if request.method == "POST" and load_template == "ui-assess":
             print(request.body)
+            username = request.user.username
+            print(username)
 
         if load_template == "ui-tables.html":
             records = HealthRecord.objects.all()

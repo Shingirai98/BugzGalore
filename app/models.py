@@ -20,3 +20,6 @@ class HealthRecord(models.Model):
 
     def __str__(self):
         return self.employee
+
+    def __repr__(self):
+        return str(self.employee)
