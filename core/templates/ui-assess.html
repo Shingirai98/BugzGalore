@@ -6,11 +6,11 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-
+    <div class="row">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title">Self Assessment</h4>
+                <h4 class="card-title">Self Assessment {{ segment }}</h4>
                 <p class="card-category">Home assessment before coming to work</p>
             </div>
             <div class="card-body">
@@ -23,11 +23,11 @@
                             </div>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="cough" class="custom-control-input">
+                            <input type="radio" id="customRadioInline1" name="cough" value=1 class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="cough" class="custom-control-input">
+                            <input type="radio" id="customRadioInline2" name="cough" value=0 class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline2">No</label>
                         </div>
                     </div>
@@ -39,11 +39,11 @@
                             </div>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="sneeze1" name="sneezing" class="custom-control-input">
+                            <input type="radio" id="sneeze1" name="sneezing" value=1 class="custom-control-input">
                             <label class="custom-control-label" for="sneeze1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="sneeze2" name="sneezing" class="custom-control-input">
+                            <input type="radio" id="sneeze2" name="sneezing" value=0 class="custom-control-input">
                             <label class="custom-control-label" for="sneeze2">No</label>
                         </div>
                     </div>
@@ -55,11 +55,11 @@
                             </div>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="exposure1" name="exposure" class="custom-control-input">
+                            <input type="radio" id="exposure1" name="exposure" value=1 class="custom-control-input">
                             <label class="custom-control-label" for="exposure1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="exposure2" name="exposure" class="custom-control-input">
+                            <input type="radio" id="exposure2" name="exposure" value=0 class="custom-control-input">
                             <label class="custom-control-label" for="exposure2">No</label>
                         </div>
                     </div>
@@ -71,19 +71,73 @@
                             </div>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="fever1" name="fever" class="custom-control-input">
+                            <input type="radio" id="fever1" name="fever" value=1 class="custom-control-input">
                             <label class="custom-control-label" for="fever1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="fever2" name="fever" class="custom-control-input">
+                            <input type="radio" id="fever2" name="fever" value=0 class="custom-control-input">
                             <label class="custom-control-label" for="fever2">No</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-center">Submit Assessment</button>
+                    <img id="progress" src="static/assets/img/progress.gif" width="40" style="display: none;">
+                    <button id="submit-button" type="submit" class="btn btn-primary pull-center">Submit Assessment</button>
                     <div class="clearfix"></div>
+
                 </form>
             </div>
         </div>
+    </div>
+
+    <div id="good" class="col-md-4" style="display: none;">
+        <div class="card card-profile">
+            <div class="card-body">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="material-icons">close</i>
+                </button>
+                <span>
+                      <b> Success - </b> You have been screened and can go to work</span>
+            </div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://google.com&amp;size=100x100" alt="" title="" />
+
+                <h6 class="card-category text-gray">
+                    a
+                </h6>
+                <h4 class="card-title">
+
+                </h4>
+                <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </p>
+                <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="bad" class="col-md-4" style="display: none;">
+        <div class="card card-profile">
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                      <b> Alert - </b> You may be at risk</span>
+                </div>
+
+                <h6 class="card-category text-gray">
+                    a
+                </h6>
+                <h4 class="card-title">
+
+                </h4>
+                <p class="card-description">
+                    It seems you are not well enough to come to work today. Please work from home and consider seeing a health professional urgently.
+                </p>
+                <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+            </div>
+        </div>
+    </div>
     </div>
 
 {% endblock content %}
@@ -92,10 +146,25 @@
 {% block javascripts %}
 
   <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initGoogleMaps();
-    });
+    $('#submit-button').off("click").on("click", function(e) {
+        e.preventDefault();
+        var options = {
+            "cough": $('input[name=cough]:checked').val(),
+            "sneezing": $('input[name=sneezing]:checked').val(),
+            "exposure": $('input[name=exposure]:checked').val(),
+            "fever": $('input[name=fever]:checked').val()
+        }
+        $("#progress").toggle()
+        for (let k in options) {
+            if (options[k]=="1"){
+                $("#bad").toggle()
+                break;
+            }
+        }
+        $("#good").toggle()
+
+        console.log(options)
+    })
   </script>
   
 {% endblock javascripts %}

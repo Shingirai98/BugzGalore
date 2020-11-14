@@ -20,14 +20,17 @@ def index(request):
 
 @login_required(login_url="/login/")
 def pages(request):
-
     context = {}
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:
-        
+        #print(request.body)
+
         load_template      = request.path.split('/')[-1]
         context['segment'] = load_template
+
+        #if request.method == "POST" and load_template == "ui-assess.html":
+            #assess(request)
 
         html_template = loader.get_template( load_template )
         return HttpResponse(html_template.render(context, request))
@@ -42,3 +45,6 @@ def pages(request):
         html_template = loader.get_template( 'page-500.html' )
         return HttpResponse(html_template.render(context, request))
 
+#def assess(request):
+    #print(request.body)
+    #render(request, "accounts/login.html", {"form": form, "msg" : msg})
