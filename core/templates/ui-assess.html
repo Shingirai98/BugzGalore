@@ -10,7 +10,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title">Self Assessment {{ segment }}</h4>
+                <h4 class="card-title">Self Assessment</h4>
                 <p class="card-category">Home assessment before coming to work</p>
             </div>
             <div class="card-body">
@@ -98,10 +98,10 @@
                 <span>
                       <b> Success - </b> You have been screened and can go to work</span>
             </div>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://google.com&amp;size=100x100" alt="" title="" />
+                <img id="qr" alt="" title="" />
 
                 <h6 class="card-category text-gray">
-                    a
+
                 </h6>
                 <h4 class="card-title">
 
@@ -109,7 +109,7 @@
                 <p class="card-description">
                     You're good to go! See you at work and remember to present your QR code.
                 </p>
-                <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                <a href="#pablo" class="btn btn-primary btn-round">Save</a>
             </div>
         </div>
     </div>
@@ -126,7 +126,7 @@
                 </div>
 
                 <h6 class="card-category text-gray">
-                    a
+
                 </h6>
                 <h4 class="card-title">
 
@@ -134,7 +134,7 @@
                 <p class="card-description">
                     It seems you are not well enough to come to work today. Please work from home and consider seeing a health professional urgently.
                 </p>
-                <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                <a href="https://sacoronavirus.co.za/" target="_blank" class="btn btn-primary btn-round">Open Guidelines</a>
             </div>
         </div>
     </div>
@@ -156,12 +156,27 @@
         }
         $("#progress").toggle()
         for (let k in options) {
-            if (options[k]=="1"){
-                $("#bad").toggle()
+            if (options[k] == "1") {
+
+                if ($("#bad").is(":hidden")) {
+                    $("#bad").toggle()
+                }
+
+                if ($("#good").is(":visible")) {
+                    $("#good").toggle()
+                }
                 break;
             }
+
+            if ($("#good").is(":hidden")) {
+                $("#good").toggle()
+                $("#qr").attr("src", "https://api.qrserver.com/v1/create-qr-code/?data=https://bugz-cme.herokuapp.com/verify&amp;size=100x100");
+            }
+
+            if ($("#bad").is(":visible")) {
+                $("#bad").toggle()
+            }
         }
-        $("#good").toggle()
 
         console.log(options)
 
