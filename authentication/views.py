@@ -12,6 +12,10 @@ from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Employee
+from .forms import SignUpForm
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -50,7 +54,7 @@ def register_user(request):
             msg     = 'User created'
             success = True
             
-            #return redirect("/login/")
+            return redirect("/login/")
 
         else:
             msg = 'Form is not valid'    
