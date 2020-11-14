@@ -1,0 +1,50 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Maps {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Self Assessment Verification</h4>
+                <p class="card-category">Home assessment before coming to work</p>
+            </div>
+            <div class="card-body">
+                Hello
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $('#submit-button').off("click").on("click", function(e) {
+        e.preventDefault();
+        var options = {
+            "cough": $('input[name=cough]:checked').val(),
+            "sneezing": $('input[name=sneezing]:checked').val(),
+            "exposure": $('input[name=exposure]:checked').val(),
+            "fever": $('input[name=fever]:checked').val()
+        }
+        $("#progress").toggle()
+        for (let k in options) {
+            if (options[k]=="1"){
+                $("#bad").toggle()
+                break;
+            }
+        }
+        $("#good").toggle()
+
+    })
+  </script>
+  
+{% endblock javascripts %}

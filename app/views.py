@@ -24,13 +24,12 @@ def pages(request):
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:
-        #print(request.body)
 
         load_template      = request.path.split('/')[-1]
         context['segment'] = load_template
 
-        #if request.method == "POST" and load_template == "ui-assess.html":
-            #assess(request)
+        if request.method == "POST" and load_template == "ui-assess":
+            print(request.body)
 
         html_template = loader.get_template( load_template )
         return HttpResponse(html_template.render(context, request))
