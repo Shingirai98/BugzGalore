@@ -9,6 +9,8 @@ from django.template import loader
 from django.http import HttpResponse
 from django import template
 
+from app.models import HealthRecord
+
 @login_required(login_url="/login/")
 def index(request):
     
@@ -30,6 +32,12 @@ def pages(request):
 
         if request.method == "POST" and load_template == "ui-assess":
             print(request.body)
+
+        if load_template == "ui-tables.html":
+            records = HealthRecord.objects.all()
+            print(records)
+
+
 
         html_template = loader.get_template( load_template )
         return HttpResponse(html_template.render(context, request))
